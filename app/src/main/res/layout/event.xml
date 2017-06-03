@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="300dp"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:timePickerMode="spinner"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/goEventLocation">
+
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerInParent="true">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="날씨 예측 받을 지역 설정"
+                   android:id="@+id/location"
+                   android:textColor="@color/black"
+                   android:layout_centerVertical="true"/>
+               <ImageView
+                   android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:layout_centerVertical="true"
+                   android:src="@drawable/ic_pin2"
+                   android:id="@+id/icon"
+                   android:layout_toRightOf="@+id/location"
+                   android:layout_marginRight="10dp"/>
+           </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEMO"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/memo"
+        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:id="@+id/cancel"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimarySecond">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="취소"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/ok"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="확인"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/layout">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="110dp"
+               android:background="@color/white"
+               android:id="@+id/back"/>
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="70dp"
+               android:textSize="40dp"
+               android:id="@+id/time"
+               android:layout_alignParentRight="true"
+               android:layout_above="@+id/bottom"
+               android:scaleType="fitCenter"
+               android:layout_marginRight="40dp" />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_above="@+id/time"
+               android:text="AM"
+               android:id="@+id/am"
+               android:textColor="@color/black"
+               android:layout_toLeftOf="@+id/pm"
+               android:layout_marginRight="10dp"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_above="@+id/time"
+               android:text="PM"
+               android:id="@+id/pm"
+               android:textColor="@color/black"
+               android:layout_alignRight="@+id/time"
+               />
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="56dp"
+               android:id="@+id/bottom"
+               android:layout_below="@+id/back"
+               android:background="@color/white">
+
+
+               <ImageView
+                   android:layout_width="15dp"
+                   android:layout_height="15dp"
+                   android:layout_alignParentBottom="true"
+                   android:layout_toLeftOf="@+id/appName"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginBottom="10dp"
+                   android:src="@drawable/cloudy"/>
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="10dp"
+                   android:layout_marginRight="40dp"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/appName"/>
+           </RelativeLayout>
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="110dp"
+               android:layout_toRightOf="@+id/weatherArea"
+               android:layout_marginLeft="10dp"
+               android:id="@+id/g1"
+               android:layout_marginRight="30dp"
+               android:background="@color/black"/>
+           <TextView
+               android:id="@+id/ymd"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:text="2017.05.27"
+               android:layout_marginLeft="10dp"
+               android:layout_toRightOf="@id/weatherArea"
+               android:layout_below="@+id/g1"
+               android:textColor="@color/black" />
+           <RelativeLayout
+               android:id="@+id/weatherArea"
+               android:layout_width="100dp"
+               android:layout_height="176dp"
+               android:layout_alignParentLeft="true">
+
+               <RelativeLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true">
+                   <ImageView
+                       android:id="@+id/weathericon"
+                       android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:background="@color/white"
+                       android:scaleType="fitCenter"
+                       android:src="@drawable/w01" />
+
+                   <ImageView
+                       android:id="@+id/address"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/weathericon"
+                       android:scaleType="centerInside"
+                       android:layout_centerHorizontal="true"
+                       android:layout_marginTop="10dp" />
+               </RelativeLayout>
+           </RelativeLayout>
+           <ImageView
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:layout_toRightOf="@+id/weatherArea"
+               android:layout_alignParentTop="true"
+               android:layout_marginTop="10dp"
+               android:padding="12dp"
+               android:src="@drawable/refre"
+               android:visibility="gone"
+               android:id="@+id/refreshback"/>
+           <ProgressBar
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:layout_toRightOf="@+id/weatherArea"
+               android:layout_alignParentTop="true"
+               android:layout_marginTop="10dp"
+               android:padding="12dp"
+               android:background="#00ffffff"
+               android:indeterminateDrawable="@anim/aa"
+               android:id="@+id/refresh"/>
+
+       </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
