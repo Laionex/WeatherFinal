@@ -896,6 +896,7 @@ public class CalendarService extends Service {
         wthTextMap.put("구름많고 비", "비가와요 우산 챙기세요");
         wthTextMap.put("구름많고 눈", "눈이내려와요 얼음길 조심하세요");
         wthTextMap.put("구름많고 비 또는 눈", "눈이나 비가내려요 감기조심하세요");
+        wthTextMap.put("비", "비가와요 빗소리에 커피한잔 해봐요");
         wthTextMap.put("흐림", "날씨가 흐리지만 항상 밝게!");
         wthTextMap.put("흐리고 비", "비가와요 빗소리에 커피한잔 해봐요");
         wthTextMap.put("흐리고 비 또는 눈", "눈이나 비가내려요 감기조심하세요");
