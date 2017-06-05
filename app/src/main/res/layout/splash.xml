@@ -23,4 +23,15 @@
             android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/appPowered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/light_grey"
+        android:paddingBottom="10dp"
+        android:textSize="12dp"
+        android:text="Powered by Weather Planet" />
 </RelativeLayout>
