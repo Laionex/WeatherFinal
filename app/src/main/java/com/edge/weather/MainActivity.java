@@ -97,8 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         wthTextMap.put("구름많고 비","비가와요 우산 챙기세요");
         wthTextMap.put("구름많고 눈","눈이내려와요 얼음길 조심하세요");
         wthTextMap.put("구름많고 비 또는 눈","눈이나 비가내려요 렛잇고!~");
+        wthTextMap.put("비", "비가와요 빗소리에 커피한잔 해봐요");
         wthTextMap.put("흐림","날씨가 흐리지만 항상 밝게!");
-        wthTextMap.put("흐리고 비","비가와요 빗소리에 커피한잔 해봐요");
+        wthTextMap.put("흐리고 비","비가 올거 같아요 우산 꼭 챙겨요!");
         wthTextMap.put("흐리고 비 또는 눈","눈이나 비가내려요 감기조심하세요");
         wthTextMap.put("흐리고 낙뢰","벼락 맞지 말고 돈벼락 맞으세요");
         wthTextMap.put("뇌우,비","천둥 번개와 비가와요! 우루루쾅쾅!");
