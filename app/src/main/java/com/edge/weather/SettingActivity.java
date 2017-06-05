@@ -17,6 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -26,19 +27,21 @@ import java.util.Date;
  * Created by kim on 2017. 5. 25..
  */
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener,CompoundButton.OnCheckedChangeListener{
-    Switch timePush,eventPush,weekPush;
+public class SettingActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+    Switch timePush, eventPush, weekPush;
     SharedPreference sharedPreference = new SharedPreference();
     TimePicker timePicker;
     ImageView complete;
     RelativeLayout back;
-    static final String TAG ="com.weather";
-    boolean setPush =false;
-    boolean setEvent= false;
+    static final String TAG = "com.weather";
+    boolean setPush = false;
+    boolean setEvent = false;
     boolean setPre = false;
-    int hour =0;
+    int hour = 0;
     int min = 0;
-    Calendar calendar =Calendar.getInstance();
+    Calendar calendar = Calendar.getInstance();
+    TextView license;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,21 +50,21 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
         initView();
-        setPush = sharedPreference.getValue(getApplicationContext(),"Push",false);
-        setEvent = sharedPreference.getValue(getApplicationContext(),"eventPush",false);
-        if (setEvent){
+        setPush = sharedPreference.getValue(getApplicationContext(), "Push", false);
+        setEvent = sharedPreference.getValue(getApplicationContext(), "eventPush", false);
+        if (setEvent) {
             eventPush.setChecked(true);
         } else {
             eventPush.setChecked(false);
         }
-        if (setPush){
+        if (setPush) {
             timePicker.setVisibility(View.VISIBLE);
             timePush.setChecked(true);
         } else {
             timePicker.setVisibility(View.GONE);
             timePush.setChecked(false);
         }
-        setPre = sharedPreference.getValue(getApplicationContext(),"weekPush",false);
+        setPre = sharedPreference.getValue(getApplicationContext(), "weekPush", false);
         if (setPre) {
             weekPush.setChecked(true);
         } else {
@@ -73,12 +76,21 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
                 complete.setEnabled(true);
-                hour =hourOfDay;
+                hour = hourOfDay;
                 min = minute;
             }
         });
+
+        license = (TextView)findViewById(R.id.license);
+        license.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent mIntent = new Intent(SettingActivity.this, LicensePopup.class);
+                startActivity(mIntent);
+            }
+        });
     }
-    private void initView(){
+
+    private void initView() {
         timePush = (Switch) findViewById(R.id.pushSwitch);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
         complete = (ImageView) findViewById(R.id.finish);
@@ -86,31 +98,34 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         back = (RelativeLayout) findViewById(R.id.back);
         weekPush = (Switch) findViewById(R.id.weekSwitch);
 
+
         weekPush.setOnCheckedChangeListener(this);
         back.setOnClickListener(this);
         eventPush.setOnCheckedChangeListener(this);
         complete.setOnClickListener(this);
         complete.setEnabled(false);
     }
-    private void goService(){
+
+    private void goService() {
         Intent service = new Intent(SettingActivity.this, CalendarService.class);
         service.setPackage("com.edge.weather");
         service.setAction(TAG);
         startService(service);
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.finish :
-                sharedPreference.put(getApplicationContext(),"hour",hour);
-                sharedPreference.put(getApplicationContext(),"min",min);
+        switch (v.getId()) {
+            case R.id.finish:
+                sharedPreference.put(getApplicationContext(), "hour", hour);
+                sharedPreference.put(getApplicationContext(), "min", min);
                 goService();
                 finish();
                 break;
             case R.id.back:
-                if (hour!=0&&min!=0){
-                    sharedPreference.put(getApplicationContext(),"hour",hour);
-                    sharedPreference.put(getApplicationContext(),"min",min);
+                if (hour != 0 && min != 0) {
+                    sharedPreference.put(getApplicationContext(), "hour", hour);
+                    sharedPreference.put(getApplicationContext(), "min", min);
                 }
                 goService();
                 finish();
@@ -120,13 +135,13 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()){
-            case R.id.pushSwitch :
-                Log.d("aaaa","ccccc");
+        switch (buttonView.getId()) {
+            case R.id.pushSwitch:
+                Log.d("aaaa", "ccccc");
                 complete.setEnabled(true);
-                if (isChecked){
-                    sharedPreference.put(getApplicationContext(),"Push",true);
-                    Animation animation =AnimationUtils.loadAnimation(getApplicationContext(),R.anim.visible);
+                if (isChecked) {
+                    sharedPreference.put(getApplicationContext(), "Push", true);
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.visible);
                     animation.setAnimationListener(new Animation.AnimationListener() {
                         @Override
                         public void onAnimationStart(Animation animation) {
@@ -146,8 +161,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                     timePicker.startAnimation(animation);
                     timePicker.setEnabled(true);
                 } else {
-                    sharedPreference.put(getApplicationContext(),"Push",false);
-                    Animation animation =AnimationUtils.loadAnimation(getApplicationContext(),R.anim.gone);
+                    sharedPreference.put(getApplicationContext(), "Push", false);
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.gone);
                     animation.setAnimationListener(new Animation.AnimationListener() {
                         @Override
                         public void onAnimationStart(Animation animation) {
@@ -171,17 +186,17 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.eventSwitch:
                 complete.setEnabled(true);
                 if (isChecked) {
-                    sharedPreference.put(getApplicationContext(),"eventPush",true);
+                    sharedPreference.put(getApplicationContext(), "eventPush", true);
                 } else {
-                    sharedPreference.put(getApplicationContext(),"eventPush",false);
+                    sharedPreference.put(getApplicationContext(), "eventPush", false);
                 }
                 break;
             case R.id.weekSwitch:
                 complete.setEnabled(true);
                 if (isChecked) {
-                    sharedPreference.put(getApplicationContext(),"weekPush",true);
+                    sharedPreference.put(getApplicationContext(), "weekPush", true);
                 } else {
-                    sharedPreference.put(getApplicationContext(),"weekPush",false);
+                    sharedPreference.put(getApplicationContext(), "weekPush", false);
                 }
                 break;
         }
@@ -190,9 +205,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (hour!=0&&min!=0){
-            sharedPreference.put(getApplicationContext(),"hour",hour);
-            sharedPreference.put(getApplicationContext(),"min",min);
+        if (hour != 0 && min != 0) {
+            sharedPreference.put(getApplicationContext(), "hour", hour);
+            sharedPreference.put(getApplicationContext(), "min", min);
         }
         goService();
         finish();
