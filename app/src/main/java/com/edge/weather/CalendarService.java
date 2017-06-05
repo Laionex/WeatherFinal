@@ -703,10 +703,9 @@ public class CalendarService extends Service {
         }
 
     }
-    //내일 내일모레 날씨 파싱하여 푸시 던지기
+    //내일 내일모레 날씨 파싱하여 푸시
     private void jsonParsingSummary(JsonObject object,int dim,Map<String,String> map){
         try {
-
             JsonObject weather= (JsonObject) object.get("weather");
             JsonArray summary = (JsonArray) weather.get("summary");
             JsonObject jsonObject = (JsonObject) summary.get(0);
