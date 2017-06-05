@@ -35,6 +35,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     static final String TAG ="com.weather";
     boolean setPush =false;
     boolean setEvent= false;
+    boolean setPre = false;
     int hour =0;
     int min = 0;
     Calendar calendar =Calendar.getInstance();
@@ -59,6 +60,12 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         } else {
             timePicker.setVisibility(View.GONE);
             timePush.setChecked(false);
+        }
+        setPre = sharedPreference.getValue(getApplicationContext(),"weekPush",false);
+        if (setPre) {
+            weekPush.setChecked(true);
+        } else {
+            weekPush.setChecked(false);
         }
         timePush.setOnCheckedChangeListener(this);
         //매일 알람 푸시 시간 설정

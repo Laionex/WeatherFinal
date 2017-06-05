@@ -889,7 +889,7 @@ public class CalendarService extends Service {
 
     //푸시 텍스트
     private void setWthTextMap() {
-        wthTextMap.put("맑음", "기분 좋은 날씨에요");
+        wthTextMap.put("맑음", "기분 좋은 날씨에요 기모띠~!");
         wthTextMap.put("구름조금", "구름이 살짝 있어요");
         wthTextMap.put("구름많음", "구름이 많아요");
         wthTextMap.put("구름많고 비", "비가와요 우산 챙기세요");
