@@ -715,13 +715,15 @@ public class CalendarService extends Service {
             getAddress(Double.parseDouble(map.get("lat")),Double.parseDouble(map.get("lon")));
             switch (dim){
                 case 1:
-                    sendPush(iconNum(tommorow),wthTextMap.get(weatherSt(tommorow)));
+                    sendPush(iconNum((JsonObject) tommorow.get("sky")),wthTextMap.get(weatherSt((JsonObject) tommorow.get("sky"))));
                     break;
                 case 2:
-                    sendPush(iconNum(dayAfterTommorow),wthTextMap.get(weatherSt(dayAfterTommorow)));
+                    sendPush(iconNum((JsonObject) dayAfterTommorow.get("sky")),wthTextMap.get(weatherSt((JsonObject) dayAfterTommorow.get("sky"))));
                     break;
             }
-        }catch (Exception e){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     //날씨 안내 메세지를 중복 코드를 피하기 위해 오브젝트를 인자로 받아 파싱후 리턴
     private String weatherSt(JsonObject object){
