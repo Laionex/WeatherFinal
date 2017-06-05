@@ -422,6 +422,7 @@ public class MyCalendar extends AppCompatActivity implements View.OnClickListene
             events.add(even);
             compactCalendarView.removeAllEvents();
             addEvents(Calendar.MONTH, Calendar.YEAR);
+            getMyEvent();
             goService();
         }
     }
